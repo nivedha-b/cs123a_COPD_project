@@ -1,6 +1,4 @@
-# COPD GWAS Starter Pipeline
-# This program cleans SNP data, runs a basic GWAS-style logistic regression,
-# creates Manhattan and QQ plots, and saves the top SNP results.
+# COPD GWAS Analysis
 
 import pandas as pd
 import numpy as np
@@ -12,16 +10,8 @@ from scipy import stats
 # 1. Load Data
 # -----------------------------
 
-# genotype_data.csv should have:
-# sample_id, rs123, rs456, rs789, ...
-# SNP values should be 0, 1, or 2
-
-# phenotype_data.csv should have:
-# sample_id, COPD_status, age, sex, BMI, smoking_status, PC1, PC2, PC3
-# COPD_status should be 1 for COPD case and 0 for control
-
 ####################
-UPDATE TO FILES
+# UPDATE TO FILES
 ####################
 
 print("Original dataset shape:")
@@ -113,9 +103,6 @@ print(gwas_results.head(10))
 # -----------------------------
 # 4. Manhattan Plot
 # -----------------------------
-
-# This simple version plots SNP order instead of chromosome position.
-# If you have chromosome and position data, this can be improved.
 
 gwas_results["minus_log10_p"] = -np.log10(gwas_results["P_Value"])
 gwas_results["SNP_index"] = range(1, len(gwas_results) + 1)
