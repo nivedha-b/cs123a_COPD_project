@@ -98,13 +98,37 @@ for feature in feature_columns:
         continue
 
 # Convert to DataFrame
-res_df = pd.DataFrame(results, columns=["Feature", "Beta", "P_Value"])
+results_df = pd.DataFrame(results, columns=["Feature", "Beta", "P_Value"])
 
 # Sort by significance
-results_df = res_df.sort_values("P_Value")
+results_df = results_df.sort_values("P_Value")
 
 print("Top results:")
 print(results_df.head())
+
+
+# -----------------------------
+# 5. Manhattan Plot
+# -----------------------------
+
+results_df.to_csv("methylation_results.csv", index=False)
+
+results_df["minus_log10_p"] = -np.log10(results_df["P_Value"])
+results_df["CpG_index"] = range(1, len(results_df) + 1)
+
+plt.figure(figsize=(12, 6))
+plt.scatter(results_df["CpG_index"], results_df["minus_log10_p"], s=10)
+
+plt.axhline(-np.log10(0.05), linestyle="--")
+plt.xlabel("CpG Site Index")
+plt.ylabel("-log10(P-value)")
+
+plt.title("Manhattan Plot for COPD Methylation Association")
+plt.tight_layout()
+plt.savefig("manhattan_plot.png")
+plt.close()
+
+print("Manhattan plot has been saved as manhattan_plot.png")
 
 
 

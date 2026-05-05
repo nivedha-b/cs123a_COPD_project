@@ -5,3 +5,7 @@ This project focuses on conducting a genomic analysis of the susceptibility of i
 - Completion of data loading and preprocessing 
 - Implementation of association testing 
 - Pending visualization and pathway analysis 
+
+## Current Progress 5/4/2026
+- Current analysis uses DNA methylation data EWAS instead of than SNP genotype data GWAS
+- Manhattan Plot Produced
