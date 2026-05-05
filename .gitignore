@@ -425,3 +425,4 @@ data/*.gz
 data/*.zip
 
 *.png
+*_results.csv
