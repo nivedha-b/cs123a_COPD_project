@@ -131,6 +131,39 @@ plt.close()
 print("Manhattan plot has been saved as manhattan_plot.png")
 
 
+# -----------------------------
+# 6. QQ Plot
+# -----------------------------
+
+# Remove the missing p-values then sort sort
+observed_pv = results_df["P_Value"].dropna().sort_values()
+
+# The expected p-values
+expected_pv = np.arange(1, len(observed_pv) + 1) / (len(observed_pv) + 1)
+
+# Convert into -log10 scale
+obs_log = -np.log10(observed_pv)
+exp_log = -np.log10(expected_pv)
+
+# QQ plot made
+plt.figure(figsize=(6, 6))
+plt.scatter(exp_log, obs_log, s=10)
+
+# diagonal line
+max_val = max(exp_log.max(), obs_log.max())
+plt.plot([0, max_val], [0, max_val])
+
+plt.xlabel("Expected -log10(P-value)")
+plt.ylabel("Observed -log10(P-value)")
+plt.title("COPD Methylation Analysis - QQ Plot")
+
+plt.tight_layout()
+plt.savefig("qq_plot.png")
+plt.close()
+
+print("QQ plot has been saved as qq_plot.png")
+
+
 
 # # -----------------------------
 # # OLD - Basic Quality Control
