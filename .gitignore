@@ -426,3 +426,5 @@ data/*.zip
 
 *.png
 *_results.csv
+top_cpg_sites.csv
+significant_cpg_sites.csv

@@ -135,7 +135,7 @@ print("Manhattan plot has been saved as manhattan_plot.png")
 # 6. QQ Plot
 # -----------------------------
 
-# Remove the missing p-values then sort sort
+# Remove the missing p-values then sort 
 observed_pv = results_df["P_Value"].dropna().sort_values()
 
 # The expected p-values
@@ -163,6 +163,22 @@ plt.close()
 
 print("QQ plot has been saved as qq_plot.png")
 
+
+# -----------------------------
+# 7. Export of top CpG Sites
+# -----------------------------
+
+# Choosing the top 20 CpG sites regarding smallest p-values
+top_sites = results_df.head(20)
+top_sites.to_csv("top_cpg_sites.csv", index=False)
+
+# Will save CpG sites that contain suggestive significance
+sig_sites = results_df[results_df["P_Value"] < 0.05]
+sig_sites.to_csv("significant_cpg_sites.csv", index=False)
+
+print("Top CpG sites has been saved as top_cpg_sites.csv")
+print("CpG sites that contain suggestive significance has been saved as significant_cpg_sites.csv")
+print("Amount of significant CpG sites:", len(sig_sites))
 
 
 # # -----------------------------
