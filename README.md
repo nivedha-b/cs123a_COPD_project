@@ -5,6 +5,7 @@ This project mainly implements an Epigenome - Wide Association Study (EWAS) pipe
 
 The second portion of this project will cover the COPD genetic literature as well as GWAS statistical summaries to further verify the biological perspective of these observations.
 
+The dataset (csv) used for EWAS can be accessed and downloaded at the following link: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE326391
 
 ## EWAS Pipeline
 This pipeline contains:
